@@ -19,12 +19,13 @@
 
 package com.puppycrawl.tools.checkstyle.filters;
 
+import com.puppycrawl.tools.checkstyle.Utils;
 import com.puppycrawl.tools.checkstyle.api.AuditEvent;
 import com.puppycrawl.tools.checkstyle.api.Filter;
-import com.puppycrawl.tools.checkstyle.Utils;
-import java.util.regex.Pattern;
-
 import org.apache.commons.beanutils.ConversionException;
+
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 /**
  * This filter processes {@link com.puppycrawl.tools.checkstyle.api.AuditEvent}
@@ -162,83 +163,28 @@ public class SuppressElement
     }
 
     @Override
-    public String toString() {
-        return "SuppressElement[files=" + filePattern + ",checks="
-            + checkPattern + ",lines=" + linesCSV + ",columns="
-            + columnsCSV + "]";
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        SuppressElement that = (SuppressElement) o;
+        return Objects.equals(String.valueOf(fileRegexp), String.valueOf(that.fileRegexp)) &&
+                Objects.equals(filePattern, that.filePattern) &&
+                Objects.equals(String.valueOf(checkRegexp), String.valueOf(that.checkRegexp)) &&
+                Objects.equals(checkPattern, that.checkPattern) &&
+                Objects.equals(moduleId, that.moduleId) &&
+                Objects.equals(lineFilter, that.lineFilter) &&
+                Objects.equals(linesCSV, that.linesCSV) &&
+                Objects.equals(columnFilter, that.columnFilter) &&
+                Objects.equals(columnsCSV, that.columnsCSV);
     }
 
     @Override
     public int hashCode() {
-        int result = HASH_MULT * filePattern.hashCode();
-        if (checkPattern != null) {
-            result = HASH_MULT * result + checkPattern.hashCode();
-        }
-        if (moduleId != null) {
-            result = HASH_MULT * result + moduleId.hashCode();
-        }
-        if (linesCSV != null) {
-            result = HASH_MULT * result + linesCSV.hashCode();
-        }
-        if (columnsCSV != null) {
-            result = HASH_MULT * result + columnsCSV.hashCode();
-        }
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (object instanceof SuppressElement) {
-            final SuppressElement other = (SuppressElement) object;
-
-            // same file pattern?
-            if (!this.filePattern.equals(other.filePattern)) {
-                return false;
-            }
-
-            // same check pattern?
-            if (checkPattern != null) {
-                if (!checkPattern.equals(other.checkPattern)) {
-                    return false;
-                }
-            }
-            else if (other.checkPattern != null) {
-                return false;
-            }
-
-            // same module id?
-            if (moduleId != null) {
-                if (!moduleId.equals(other.moduleId)) {
-                    return false;
-                }
-            }
-            else if (other.moduleId != null) {
-                return false;
-            }
-
-            // same line number filter?
-            if (lineFilter != null) {
-                if (!lineFilter.equals(other.lineFilter)) {
-                    return false;
-                }
-            }
-            else if (other.lineFilter != null) {
-                return false;
-            }
-
-            // same column number filter?
-            if (columnFilter != null) {
-                if (!columnFilter.equals(other.columnFilter)) {
-                    return false;
-                }
-            }
-            else if (other.columnFilter != null) {
-                return false;
-            }
-
-            // everything is the same
-            return true;
-        }
-        return false;
+        return Objects.hash(fileRegexp, filePattern, checkRegexp, checkPattern, moduleId,
+                lineFilter, linesCSV, columnFilter, columnsCSV);
     }
 }
