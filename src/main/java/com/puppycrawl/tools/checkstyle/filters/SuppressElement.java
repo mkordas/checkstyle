@@ -139,18 +139,10 @@ public class SuppressElement
         }
 
         // reject if no line/column matching
-        if (lineFilter == null && columnFilter == null) {
-            return false;
-        }
+        return !(lineFilter == null && columnFilter == null)
+                && !(lineFilter != null && lineFilter.accept(event.getLine()))
+                && !(columnFilter != null && columnFilter.accept(event.getColumn()));
 
-        if (lineFilter != null && lineFilter.accept(event.getLine())) {
-            return false;
-        }
-
-        if (columnFilter != null && columnFilter.accept(event.getColumn())) {
-            return false;
-        }
-        return true;
     }
 
     /**

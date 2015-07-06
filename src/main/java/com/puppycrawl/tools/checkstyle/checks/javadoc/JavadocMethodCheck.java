@@ -973,12 +973,9 @@ public class JavadocMethodCheck extends AbstractTypeAwareCheck {
         }
 
         final AST expr = slist.getFirstChild();
-        if (expr.getType() != TokenTypes.EXPR
-                || expr.getFirstChild().getType() != TokenTypes.ASSIGN) {
-            return false;
-        }
+        return !(expr.getType() != TokenTypes.EXPR
+                || expr.getFirstChild().getType() != TokenTypes.ASSIGN);
 
-        return true;
     }
 
     /**
@@ -1024,12 +1021,9 @@ public class JavadocMethodCheck extends AbstractTypeAwareCheck {
         }
 
         final AST expr = slist.getFirstChild();
-        if (expr.getType() != TokenTypes.LITERAL_RETURN
-                || expr.getFirstChild().getType() != TokenTypes.EXPR) {
-            return false;
-        }
+        return !(expr.getType() != TokenTypes.LITERAL_RETURN
+                || expr.getFirstChild().getType() != TokenTypes.EXPR);
 
-        return true;
     }
 
     /** Stores useful information about declared exception. */
