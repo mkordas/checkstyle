@@ -711,6 +711,29 @@
       </plugin>
 
       <plugin>
+        <groupId>com.qulice</groupId>
+        <artifactId>qulice-maven-plugin</artifactId>
+        <version>0.12.1</version>
+        <configuration>
+          <license>file:${basedir}/config/java.header</license>
+          <excludes>
+            <exclude>checkstyle:.*Test.*</exclude>
+            <exclude>checkstyle:.*Input.*</exclude>
+            <exclude>checkstyle:.*grammars.*</exclude>
+            <exclude>checkstyle:.*grammars.*</exclude>
+            <exclude>checkstyle:.*site.*</exclude>
+          </excludes>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
         <version>${maven.findbugs.plugin.version}</version>
