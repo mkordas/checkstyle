@@ -277,13 +277,9 @@ public class EmptyLineSeparatorCheck extends Check {
     private void processVariableDef(DetailAST ast, DetailAST nextToken) {
         if (isTypeField(ast) && !hasEmptyLineAfter(ast)) {
             if (allowNoEmptyLineBetweenFields
-                && nextToken.getType() != TokenTypes.VARIABLE_DEF
-                && nextToken.getType() != TokenTypes.RCURLY) {
-                log(nextToken.getLineNo(), MSG_SHOULD_BE_SEPARATED,
-                     nextToken.getText());
-            }
-            else if (!allowNoEmptyLineBetweenFields
-                     && nextToken.getType() != TokenTypes.RCURLY) {
+                    && nextToken.getType() != TokenTypes.VARIABLE_DEF
+                    && nextToken.getType() != TokenTypes.RCURLY
+                    || !allowNoEmptyLineBetweenFields && nextToken.getType() != TokenTypes.RCURLY) {
                 log(nextToken.getLineNo(), MSG_SHOULD_BE_SEPARATED,
                      nextToken.getText());
             }
