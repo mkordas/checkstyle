@@ -58,7 +58,7 @@ public class MissingOverrideCheckTest extends BaseCheckTestSupport {
      * flagged for only including the inheritDoc tag even in Java 5 compatibility mode.
      */
     @Test
-    public void testBadOverrideFromObjectJ5Compat() throws Exception {
+    public void testBadOverrideFromObjectJ5Compatible() throws Exception {
         DefaultConfiguration checkConfig = createCheckConfig(MissingOverrideCheck.class);
         checkConfig.addAttribute("javaFiveCompatibility", "true");
 
@@ -97,7 +97,7 @@ public class MissingOverrideCheckTest extends BaseCheckTestSupport {
      * Java 5 compatibility mode.
      */
     @Test
-    public void testBadOverrideFromOtherJ5Compat() throws Exception {
+    public void testBadOverrideFromOtherJ5Compatible() throws Exception {
         DefaultConfiguration checkConfig = createCheckConfig(MissingOverrideCheck.class);
         checkConfig.addAttribute("javaFiveCompatibility", "true");
 
@@ -111,7 +111,7 @@ public class MissingOverrideCheckTest extends BaseCheckTestSupport {
      * for only including the inheritDoc tag.
      */
     @Test
-    public void testBadAnnonOverride() throws Exception {
+    public void testBadAnnotationOverride() throws Exception {
         DefaultConfiguration checkConfig = createCheckConfig(MissingOverrideCheck.class);
         final String[] expected = {
             "10: " + getCheckMessage(MSG_KEY_ANNOTATION_MISSING_OVERRIDE),
@@ -128,7 +128,7 @@ public class MissingOverrideCheckTest extends BaseCheckTestSupport {
      * Java 5 compatibility mode.
      */
     @Test
-    public void testBadAnnonOverrideJ5Compat() throws Exception {
+    public void testBadAnnotationOverrideJ5Compatible() throws Exception {
         DefaultConfiguration checkConfig = createCheckConfig(MissingOverrideCheck.class);
         checkConfig.addAttribute("javaFiveCompatibility", "true");
         final String[] expected = ArrayUtils.EMPTY_STRING_ARRAY;
@@ -169,7 +169,7 @@ public class MissingOverrideCheckTest extends BaseCheckTestSupport {
      * flagged for only including the inheritDoc tag even in Java 5 compatibility mode.
      */
     @Test
-    public void testGoodOverrideFromObjectJ5Compat() throws Exception {
+    public void testGoodOverrideFromObjectJ5Compatible() throws Exception {
         DefaultConfiguration checkConfig = createCheckConfig(MissingOverrideCheck.class);
         checkConfig.addAttribute("javaFiveCompatibility", "true");
 
@@ -195,7 +195,7 @@ public class MissingOverrideCheckTest extends BaseCheckTestSupport {
      * Java 5 compatibility mode.
      */
     @Test
-    public void testGoodOverrideFromOtherJ5Compat() throws Exception {
+    public void testGoodOverrideFromOtherJ5Compatible() throws Exception {
         DefaultConfiguration checkConfig = createCheckConfig(MissingOverrideCheck.class);
         checkConfig.addAttribute("javaFiveCompatibility", "true");
 
@@ -209,7 +209,7 @@ public class MissingOverrideCheckTest extends BaseCheckTestSupport {
      * for only including the inheritDoc tag.
      */
     @Test
-    public void testGoodAnnonOverride() throws Exception {
+    public void testGoodAnnotationOverride() throws Exception {
         DefaultConfiguration checkConfig = createCheckConfig(MissingOverrideCheck.class);
         final String[] expected = ArrayUtils.EMPTY_STRING_ARRAY;
 
@@ -221,7 +221,7 @@ public class MissingOverrideCheckTest extends BaseCheckTestSupport {
      * Java 5 compatibility mode.
      */
     @Test
-    public void testGoodAnnonOverrideJ5Compat() throws Exception {
+    public void testGoodAnnotationOverrideJ5Compatible() throws Exception {
         DefaultConfiguration checkConfig = createCheckConfig(MissingOverrideCheck.class);
         checkConfig.addAttribute("javaFiveCompatibility", "true");
         final String[] expected = ArrayUtils.EMPTY_STRING_ARRAY;
@@ -230,7 +230,7 @@ public class MissingOverrideCheckTest extends BaseCheckTestSupport {
     }
 
     @Test
-    public void testGetAcceptableTockens() throws Exception {
+    public void testGetAcceptableTokens() throws Exception {
         int[] expectedTokens = {TokenTypes.METHOD_DEF };
         MissingOverrideCheck check = new MissingOverrideCheck();
         int[] actual = check.getAcceptableTokens();

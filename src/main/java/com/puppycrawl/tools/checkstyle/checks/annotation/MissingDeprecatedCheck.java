@@ -178,11 +178,11 @@ public final class MissingDeprecatedCheck extends Check {
             currentLine++;
             final String line = lines[i];
 
-            final Matcher javadocNoargMatcher =
+            final Matcher javadocNoArgMatcher =
                 MATCH_DEPRECATED.matcher(line);
             final Matcher noargMultilineStart = MATCH_DEPRECATED_MULTILINE_START.matcher(line);
 
-            if (javadocNoargMatcher.find()) {
+            if (javadocNoArgMatcher.find()) {
                 if (found) {
                     log(currentLine, MSG_KEY_JAVADOC_DUPLICATE_TAG,
                         JavadocTagInfo.DEPRECATED.getText());
