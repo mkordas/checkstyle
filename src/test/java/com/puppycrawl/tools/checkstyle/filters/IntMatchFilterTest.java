@@ -39,7 +39,7 @@ public class IntMatchFilterTest {
 
     @Test
     public void testEqualsAndHashCode() {
-        EqualsVerifier.forClass(IntMatchFilter.class).verify();
+        EqualsVerifier.forClass(IntMatchFilter.class).usingGetClass().verify();
     }
 
     @Test

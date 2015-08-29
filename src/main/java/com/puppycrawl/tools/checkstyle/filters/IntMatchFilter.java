@@ -46,16 +46,19 @@ class IntMatchFilter implements IntFilter {
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         return Integer.valueOf(matchValue).hashCode();
     }
 
     @Override
-    public final boolean equals(Object object) {
-        if (object instanceof IntMatchFilter) {
-            final IntMatchFilter other = (IntMatchFilter) object;
-            return matchValue == other.matchValue;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
         }
-        return false;
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final IntMatchFilter other = (IntMatchFilter) obj;
+        return matchValue == other.matchValue;
     }
 }
