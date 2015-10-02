@@ -233,12 +233,10 @@ public class TranslationCheck
             + extension + "$");
         final Matcher matcher = pattern.matcher(translationPath);
         if (matcher.matches()) {
-            fullBundleName = translationPath
-                .substring(0, translationPath.lastIndexOf('_'));
+            fullBundleName = translationPath.substring(0, translationPath.lastIndexOf('_'));
         }
         else {
-            fullBundleName = translationPath
-                .substring(0, translationPath.lastIndexOf('.'));
+            fullBundleName = translationPath.substring(0, translationPath.lastIndexOf('.'));
         }
         return fullBundleName;
     }
