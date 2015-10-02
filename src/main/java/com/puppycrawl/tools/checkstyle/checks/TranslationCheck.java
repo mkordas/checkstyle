@@ -239,6 +239,7 @@ public class TranslationCheck
         else {
             fullBundleName = translationPath
                 .substring(0, translationPath.lastIndexOf('.'));
+            System.err.println(translationPath + pattern.pattern());
         }
         return fullBundleName;
     }

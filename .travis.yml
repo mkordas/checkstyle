@@ -234,3 +234,4 @@ cache:
 branches:
   only:
     - master
+    - test-coverage
